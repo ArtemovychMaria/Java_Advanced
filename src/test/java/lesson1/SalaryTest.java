@@ -14,12 +14,12 @@ public class SalaryTest {
     }
 
     @Test(expected = MyException.class)
-    public void itCalculateMonthSalary() throws MyException {
+    public void itThrowsExceptionWhenSalaryInHourIsNegative() {
         int actual = salary.calculateMonthSalary(-200, 168);
     }
 
     @Test
-    public void itCalculateCleanSalary() throws MyException {
+    public void itCalculateCleanSalary() {
         int result = salary.calculateMonthSalary(200, 168);
         int podatok = salary.calculatePodatok(result);
         int actual = salary.calculateCleanSalary(result, podatok);

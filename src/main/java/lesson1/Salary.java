@@ -9,7 +9,7 @@ public class Salary {
     int syma;
 
 
-    public int calculateMonthSalary(int salaryInHour, int hours) throws MyException {
+    public int calculateMonthSalary(int salaryInHour, int hours) {
         int salary = salaryInHour * hours;
         if (salary < 0) {
             throw new MyException("Salarry can not to be less than 0");
