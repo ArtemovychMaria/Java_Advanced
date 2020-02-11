@@ -9,30 +9,23 @@ public class SalaryTest {
     private Salary salary;
 
     @Before
-    public void setup(){
-        salary=new Salary();
+    public void setup() {
+        salary = new Salary();
+    }
+
+    @Test(expected = MyException.class)
+    public void itCalculateMonthSalary() throws MyException {
+        int actual = salary.calculateMonthSalary(-200, 168);
     }
 
     @Test
-    public void itCalculateMonthSalary() {
-        int actual=salary.calculateMonthSalary(-200,168);
-            try {
-                if (actual<0)
-                throw new MyException();
-        } catch (MyException e) {
-                e.printStackTrace();
-                e.toString();
-            }
-    }
+    public void itCalculateCleanSalary() throws MyException {
+        int result = salary.calculateMonthSalary(200, 168);
+        int podatok = salary.calculatePodatok(result);
+        int actual = salary.calculateCleanSalary(result, podatok);
+        int expected = 28560;
 
-    @Test
-    public void itCalculateCleanSalary(){
-        int result=salary.calculateMonthSalary(200,168);
-        int podatok=salary.calculatePodatok(result);
-        int actual=salary.calculateCleanSalary(result,podatok);
-        int expected=28560;
-
-        Assert.assertEquals(expected,actual);
+        Assert.assertEquals(expected, actual);
     }
 
 }
